@@ -63,3 +63,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #manually added
 gem 'devise'
+gem 'carrierwave', '~> 1.0'
+gem "mini_magick"

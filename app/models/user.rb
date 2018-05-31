@@ -4,4 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :username, uniqueness: { case_sensitive: false }
+  mount_uploader :avatar, AvatarUploader
 end
