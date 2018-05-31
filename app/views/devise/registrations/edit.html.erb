@@ -1,6 +1,8 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%=image_tag current_user.avatar.thumb.url%>
+<%if current_user.avatar.present?%>
+  <%=image_tag current_user.avatar.thumb.url%>
+<%end%>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
