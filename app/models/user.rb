@@ -6,4 +6,6 @@ class User < ApplicationRecord
   validates :username, uniqueness: { case_sensitive: false }
   enum role: [:swapper, :admin]
   mount_uploader :avatar, AvatarUploader
+  has_many :ownerships, dependent: :destroy
+  has_many :cards, through: :ownerships
 end

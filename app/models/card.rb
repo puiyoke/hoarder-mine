@@ -1,4 +1,6 @@
 class Card < ApplicationRecord
-    mount_uploader :image, AvatarUploader
-  end
+  has_many :ownerships, dependent: :destroy
+  has_many :users, through: :ownerships
+  mount_uploader :image, AvatarUploader
+end
   

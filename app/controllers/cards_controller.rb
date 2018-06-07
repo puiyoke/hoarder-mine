@@ -39,4 +39,5 @@ class CardsController < ApplicationController
         params.require(:card).permit(:image, :remote_image_url, :name, :release_country, :release_year)
     end
 
+
 end
