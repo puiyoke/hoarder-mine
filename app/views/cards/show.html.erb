@@ -1,0 +1,10 @@
+<%=image_tag @card.image.thumb.url%>
+<%=@card.name%>
+<%=@card.release_country%>
+<%=@card.release_year%>
+
+<%if current_user.admin?%>
+    <br><a href="/cards/<%=@card.id%>/edit">edit</a> | 
+    <a href="/cards/<%=@card.id%>", data-method="delete", data-confirm="Are you sure?">delete</a>
+<%end%>
+<br><a href="/">Back</a>

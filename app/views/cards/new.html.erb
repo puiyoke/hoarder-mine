@@ -1,0 +1,9 @@
+<h1>Add New Card!</h1>
+<br>
+
+<%= form_for :card, url: '/cards', id:"cards-form" do |f| %>
+<%= render partial: '/cards/form', locals: { f: f } %>
+
+<% end %>
+
+<br><a href="/">Back</a>

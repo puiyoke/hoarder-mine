@@ -1,9 +1,17 @@
 <% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path)  %>  
-  </li>
-<% end %>
+  <%if current_user.admin?%>
+    <%= link_to('New Card', new_card_path) %>
+    <h1>Latest uploaded cards</h1>
+    <%@card.each do |x|%>
+      <a href="/cards/<%=x.id%>"><%=image_tag x.image.thumb.url%></a>
+      <%=x.name%>
+      <%=x.release_country%>
+      <%=x.release_year%>
+    <%end%>
+  <%else%>
+    <h1>Latest uploaded cards</h1>
+    <%@card.each do |x|%>
+      <a href="/cards/<%=x.id%>"><%=image_tag x.image.thumb.url%></a>
+    <%end%>
+  <%end%>
+<%end%>

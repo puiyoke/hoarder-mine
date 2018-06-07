@@ -1,0 +1,9 @@
+<h1>Edit Card!</h1>
+<br>
+
+<%= form_for :card, url: {action: "update"}, id:"cards-form", method:"PUT" do |f| %>
+<%= render partial: '/cards/form', locals: { f: f } %>
+
+<% end %>
+
+<br><a href="/cards/<%=@card.id%>">Back</a>
