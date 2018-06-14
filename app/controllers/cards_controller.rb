@@ -1,6 +1,7 @@
 class CardsController < ApplicationController
 
-    def index
+    def search
+        @card = Card.search(params[:search])
     end
     
     def new
@@ -15,6 +16,8 @@ class CardsController < ApplicationController
 
     def show
         @card = Card.find(params[:id])
+        @owned = Ownership.where(card_id: params[:id]).owned
+        @wished = Ownership.where(card_id: params[:id]).wishlist
     end
 
     def edit

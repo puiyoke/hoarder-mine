@@ -14,6 +14,10 @@
 
 <%if current_user.admin?%>
     <br><a href="/cards/<%=@card.id%>/edit">edit</a> | 
-    <a href="/cards/<%=@card.id%>", data-method="delete", data-confirm="Are you sure?">delete</a>
+    <a href="/cards/<%=@card.id%>", data-method="delete", data-confirm="Are you sure?">delete</a><br>
+    Owned by: <%=@owned.count%> user(s) <br>
+    Wishlisted by: <%=@wished.count%> user(s)
 <%end%>
-<br><a href="/">Back</a>
+
+<br><a href="/">Previous</a> | <a href="">Next</a><br>
+<a href="#" onclick="history.go(-1)">Back</a>

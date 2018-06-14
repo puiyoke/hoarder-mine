@@ -1,13 +1,11 @@
 <h3>Owned Cards</h3>
 
+<p>Total: <%=@owned_count.count%></p>
+
 <%@owned.each do |y|%>
     <%if @ownership.find_by(card_id: y.id).owned?%>
         <a href="/cards/<%=y.id%>"><%= image_tag(y.image.thumb.url) %></a>
     <%end%>
 <%end%>
-
-<%a = @ownership.where(status: "owned")%>
-
-    <%=a.count%>
 
 <br><a href="/">Back</a>

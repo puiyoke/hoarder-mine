@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
+  get 'search' => 'cards#search'
   get 'owned' => 'users#owned'
   get 'wishlist' => 'users#wishlist'
   get 'add_owned/:id' => 'ownerships#own'
