@@ -2,26 +2,35 @@
   <%if current_user.admin?%>
     <%= link_to('New Card', new_card_path) %>
     <h1>Latest uploaded cards</h1>
-    <%@card.each do |x|%>
-      <a href="/cards/<%=x.id%>"><%=image_tag x.image.thumb.url%></a>
-      <%=x.name%>
-      <%=x.release_country%>
-      <%=x.release_year%>
-    <%end%>
+    <div class="container">
+      <div class="row">
+        <% @card.each do |x| %>
+            <div class="col-sm-2">
+            <% if x.image.present? %>
+              <a href="/cards/<%=x.id%>"><%= image_tag(x.image.thumb.url) %></a>
+            <% end%>
+                <br><%= x.name %><br>
+                <%= x.release_country %> | 
+                <%= x.release_year %>
+            </div>
+        <% end %>
+      </div>
+    </div>
   <%else%>
     <h1>Latest uploaded cards</h1>
-    <%@card.each do |x|%>
-      <a href="/cards/<%=x.id%>"><%=image_tag x.image.thumb.url%></a>
-      <%= form_for :ownership, url: '/ownerships' do |f| %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.hidden_field :card_id, :value => x.id %>
-        <%= f.radio_button :status, "not_interested" %><span> Not Interested<br>
-        <%= f.radio_button :status, "owned" %><span> Owned<br>
-        <%= f.radio_button :status, "wishlist" %><span> Wishlist<br>
-        <%= f.submit "Submit", class:"btn btn-primary" %><br>
-      <%end%>
-    <%end%>
+    <div class="container">
+      <div class="row">
+        <% @card.each do |x| %>
+            <div class="col-sm-2">
+            <% if x.image.present? %>
+              <a href="/cards/<%=x.id%>"><%= image_tag(x.image.thumb.url) %></a>
+            <% end%>
+            <br><%= x.name %><br>
+              <a href="/">Owned</a> | 
+              <a href="/">Wishlist</a>
+            </div>
+        <% end %>
+      </div>
+    </div>
   <%end%>
 <%end%>
-
-

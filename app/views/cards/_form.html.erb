@@ -1,8 +1,8 @@
 
-    Image: <%= f.file_field :image%><br>
-    Image URL: <%= f.text_field :remote_image_url, class: 'form-control' %><br>
-    Name: <%= f.text_field :name, :required => 'required', class: 'form-control' %><br>
-    Country: <%= f.text_field :release_country, class: 'form-control' %><br>
-    Release Year:<%= f.text_field :release_year, class: 'form-control' %><br>
+    Image: <%= f.file_field :image%><br><br>
+    Image URL: <%= f.text_field :remote_image_url, class: 'form-control col-md-4' %><br>
+    Name: <%= f.text_field :name, :required => 'required', class: 'form-control col-md-4' %><br>
+    Country: <%= f.text_field :release_country, class: 'form-control col-md-4' %><br>
+    Release Year:<%= f.text_field :release_year, class: 'form-control col-md-4' %><br>
     
     <%= f.submit "Submit", class:"btn btn-primary" %>
