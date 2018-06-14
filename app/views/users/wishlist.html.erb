@@ -1,1 +1,9 @@
-wishlist
+<h3>Wishlist</h3>
+
+<%current_user.cards.each do |y|%>
+    <%if current_user.ownerships.find_by(card_id: y.id).wishlist?%>
+        <a href="/cards/<%=y.id%>"><%= image_tag(y.image.thumb.url) %></a>
+    <%end%>
+<%end%>
+
+<br><a href="/">Back</a>

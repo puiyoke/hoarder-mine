@@ -7,5 +7,7 @@ Rails.application.routes.draw do
 
   get 'owned' => 'users#owned'
   get 'wishlist' => 'users#wishlist'
-
+  get 'add_owned/:id' => 'ownerships#own'
+  get 'add_wishlist/:id' => 'ownerships#wish'
+  get 'delete_collection/:id' => 'ownerships#destroy'
 end

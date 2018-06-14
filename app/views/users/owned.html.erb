@@ -1,1 +1,9 @@
-owned
+<h3>Owned Cards</h3>
+
+<%current_user.cards.each do |y|%>
+    <%if current_user.ownerships.find_by(card_id: y.id).owned?%>
+        <a href="/cards/<%=y.id%>"><%= image_tag(y.image.thumb.url) %></a>
+    <%end%>
+<%end%>
+
+<br><a href="/">Back</a>
