@@ -1,7 +1,16 @@
-<%=image_tag @card.image.thumb.url%>
-<%=@card.name%>
-<%=@card.release_country%>
-<%=@card.release_year%>
+<table>
+<tr>
+<th><%=@card.name%><th>
+</tr>
+<tr>
+<td><%=image_tag @card.image.big.url%></td>
+</tr>
+<tr><td>Country: <%=@card.release_country%></td>
+</tr>
+<tr><td>Year: <%=@card.release_year%></td>
+</tr>
+</table>
+
 
 <%if current_user.admin?%>
     <br><a href="/cards/<%=@card.id%>/edit">edit</a> | 

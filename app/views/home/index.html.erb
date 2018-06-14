@@ -24,9 +24,9 @@
           <div class="col-sm-2">
             <%if current_user.ownerships.find_by(card_id: x.id).present?%>
               <%if current_user.ownerships.find_by(card_id: x.id).owned?%>
-                owned <a href="/delete_collection/<%=x.id%>", data-confirm="Are you sure?">x</a><br>
+                owned <a href="/delete_collection/<%=x.id%>", data-confirm="Remove card from your collection?">x</a><br>
               <%else%>
-                wishlist <a href="/delete_collection/<%=x.id%>", data-confirm="Are you sure?">x</a><br>
+                wishlist <a href="/delete_collection/<%=x.id%>", data-confirm="Remove card from your collection?">x</a><br>
               <%end%>
             <%else%>
              --<br>
@@ -43,3 +43,5 @@
     </div>
   <%end%>
 <%end%>
+
+<%= will_paginate @card %>

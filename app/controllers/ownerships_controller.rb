@@ -5,10 +5,10 @@ class OwnershipsController < ApplicationController
     end
 
     def own
-        @exist = Ownership.find_by(user_id: current_user.id) && Ownership.find_by(card_id: params[:id])
-        if @exist
-            Ownership.find_by(card_id: params[:id]).update(status: "owned")
-            flash[:notice] = "Succesfully added to owned"
+        @exist = current_user.ownerships.find_by(card_id: params[:id])
+        if  @exist
+            @exist.update(status: "owned")
+            flash[:notice] = "Succesfully changed to owned"
             redirect_to request.referrer
         else
             @ownership = Ownership.new
@@ -22,10 +22,10 @@ class OwnershipsController < ApplicationController
     end
 
     def wish
-        @exist = Ownership.find_by(user_id: current_user.id) && Ownership.find_by(card_id: params[:id])
-        if @exist
-            Ownership.find_by(card_id: params[:id]).update(status: "wishlist")
-            flash[:notice] = "Succesfully added to wishlist"
+        @exist = current_user.ownerships.find_by(card_id: params[:id])
+        if  @exist
+            @exist.update(status: "wishlist")
+            flash[:notice] = "Succesfully changed to wishlist"
             redirect_to request.referrer
         else
             @ownership = Ownership.new
@@ -49,8 +49,8 @@ class OwnershipsController < ApplicationController
     end
 
     def destroy
-        @exist = Ownership.find_by(user_id: current_user.id) && Ownership.find_by(card_id: params[:id])
-        if @exist
+        @exist = current_user.ownerships.find_by(card_id: params[:id])
+        if  @exist
             @exist.delete
             flash[:notice] = "Succesfully deleted from your personal list"
             redirect_to request.referrer
