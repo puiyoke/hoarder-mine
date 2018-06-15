@@ -4,5 +4,6 @@
     Name: <%= f.text_field :name, :required => 'required', class: 'form-control col-md-4' %><br>
     Country: <%= f.text_field :release_country, class: 'form-control col-md-4' %><br>
     Release Year:<%= f.text_field :release_year, class: 'form-control col-md-4' %><br>
+    Other Details:<%= f.text_area :details, placeholder: "*Optional", class: 'form-control col-md-4' %><br>
     
     <%= f.submit "Submit", class:"btn btn-primary" %>

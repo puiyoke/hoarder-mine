@@ -1,15 +1,25 @@
+<h3>Card Details</h3>
+
 <table>
-<tr>
-<th><%=@card.name%><th>
-</tr>
-<tr>
-<td><%=image_tag @card.image.big.url%></td>
-</tr>
-<tr><td>Country: <%=@card.release_country%></td>
-</tr>
-<tr><td>Year: <%=@card.release_year%></td>
-</tr>
+    <tr>
+        <th><%=@card.name%><th>
+    </tr>
+    <tr>
+        <td><%=image_tag @card.image.big.url%></td>
+    </tr>
+    <%if @card.details.present?%>
+        <tr>
+            <td><%=@card.details%></td>
+        </tr>
+    <%end%>
+    <tr>
+        <td>Country: <%=@card.release_country%></td>
+    </tr>
+    <tr>
+        <td>Year: <%=@card.release_year%></td>
+    </tr>
 </table>
+<br>Problems with this Card? <a href="/report/<%=@card.id%>">Let us know!</a><br>
 
 
 <%if current_user.admin?%>
@@ -19,5 +29,4 @@
     Wishlisted by: <%=@wished.count%> user(s)
 <%end%>
 
-<br><a href="/">Previous</a> | <a href="">Next</a><br>
-<a href="#" onclick="history.go(-1)">Back</a>
+<br><a href="#" onclick="history.go(-1)">Back</a>

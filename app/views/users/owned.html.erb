@@ -2,10 +2,17 @@
 
 <p>Total: <%=@owned_count.count%></p>
 
-<%@owned.each do |y|%>
-    <%if @ownership.find_by(card_id: y.id).owned?%>
-        <a href="/cards/<%=y.id%>"><%= image_tag(y.image.thumb.url) %></a>
-    <%end%>
-<%end%>
-
+<div class="container">
+    <div class="row">
+        <%@owned.each do |y|%>
+            <%if @ownership.find_by(card_id: y.id).owned?%>
+                <div class="col-sm-2">
+                    <a href="/delete_collection/<%=y.id%>", data-confirm="Remove card from your collection?">x</a> | 
+                    <a href="add_wishlist/<%=y.id%>">Wishlist</a><br>
+                    <a href="/cards/<%=y.id%>"><%= image_tag(y.image.thumb.url) %></a>
+                </div>
+            <%end%>
+        <%end%>
+    </div>
+</div>
 <br><a href="/">Back</a>

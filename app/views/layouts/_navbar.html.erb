@@ -1,0 +1,68 @@
+<% if user_signed_in? %>
+    <%if current_user.admin?%>
+        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="/"><img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            Hoarder's Mine</a>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="navbar-nav">
+                        <a class="nav-link" href="/cards/new">New Card</a>
+                    </li>
+                    <li class="navbar-nav">
+                        <a class="nav-link" href="#">Reports</a>
+                    </li>
+                </ul>
+                <span class="navbar-nav">
+                    <%=form_tag(search_path, :method => 'get', id: "search-form", class:"form-inline") do%>
+                        <input id="alltags"<%=text_field_tag :search, params[:search], class:"form-control mr-sm-2"%>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <%end%>
+                    <a class="nav-item nav-link" data-method="delete" href="/users/sign_out">Logout</a>
+                </span>
+            </div>
+        </nav>
+    <%else%>
+        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="/"><img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            Hoarder's Mine</a>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="navbar-nav">
+                        <a class="nav-link" href="/owned">Owned</a>
+                    </li>
+                    <li class="navbar-nav">
+                        <a class="nav-link" href="/wishlist">Wishlist</a>
+                    </li>
+                    <li class="navbar-nav">
+                        <a class="nav-link" href="/suggest">Suggest</a>
+                    </li>
+                    <li class="navbar-nav">
+                        <a class="nav-link" href="/status">Suggest/Report Status</a>
+                    </li>
+                </ul>
+                <span class="navbar-nav">
+                    <%=form_tag(search_path, :method => 'get', id: "search-form", class:"form-inline") do%>
+                        <input id="alltags"<%=text_field_tag :search, params[:search], class:"form-control mr-sm-2"%>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <%end%>
+                    <a class="nav-item nav-link" data-method="delete" href="/users/sign_out">Logout</a>
+                </span>
+            </div>
+        </nav>
+    <%end%>
+<%else%>
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="/"><img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        Hoarder's Mine</a>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="navbar-nav">
+                    <a class="nav-item nav-link" href="/users/sign_in">Login</a>
+                </li>
+                <li class="navbar-nav">
+                    <a class="nav-item nav-link" href="/users/sign_up">Signup</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+<% end %>

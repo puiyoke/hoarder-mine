@@ -1,0 +1,9 @@
+<h3>Suggest a Card</h3>
+
+<br><p>Card you are looking for is not on our site?</p>
+<p>Please fill up this form (Reviews will be done & if everything's okay, your suggestion will be up on the site in no time!)</p>
+
+<%= form_for :suggest, url: '/suggest/new' do |f| %>
+    <%= render partial: '/cards/form', locals: { f: f } %>
+    
+    <% end %>

@@ -5,11 +5,10 @@ class Card < ApplicationRecord
 
   def self.search(search)
     if search
-        where("name ILIKE ?", "%#{search}%")
+        where("name ILIKE ? OR release_country ILIKE ?", "%#{search}%", "%#{search}%").order("release_year")
     else
         scoped
     end
   end
 
 end
-  

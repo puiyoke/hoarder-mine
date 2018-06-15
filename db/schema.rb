@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_07_100045) do
+ActiveRecord::Schema.define(version: 2018_06_15_070924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2018_06_07_100045) do
     t.string "name"
     t.string "release_country"
     t.integer "release_year"
+    t.string "details"
   end
 
   create_table "ownerships", force: :cascade do |t|
@@ -30,6 +31,31 @@ ActiveRecord::Schema.define(version: 2018_06_07_100045) do
     t.integer "status"
     t.index ["card_id"], name: "index_ownerships_on_card_id"
     t.index ["user_id"], name: "index_ownerships_on_user_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "card_id"
+    t.string "image"
+    t.string "details"
+    t.string "review", default: "pending"
+    t.index ["card_id"], name: "index_reports_on_card_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
+  end
+
+  create_table "suggestions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "image"
+    t.string "name"
+    t.string "release_country"
+    t.integer "release_year"
+    t.string "details"
+    t.string "review", default: "pending"
+    t.index ["user_id"], name: "index_suggestions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

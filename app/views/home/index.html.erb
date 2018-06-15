@@ -1,18 +1,17 @@
 <% if user_signed_in? %>
   <%if current_user.admin?%>
-    <%= link_to('New Card', new_card_path) %>
-    <h1>Latest uploaded cards</h1>
+    <h2>Latest uploaded cards</h2>
     <div class="container">
       <div class="row">
         <% @card.each do |x| %>
-            <div class="col-sm-2">
+          <div class="col-sm-2">
             <% if x.image.present? %>
               <a href="/cards/<%=x.id%>"><%= image_tag(x.image.thumb.url) %></a>
             <% end%>
-                <br><%= x.name %><br>
-                <%= x.release_country %> | 
-                <%= x.release_year %>
-            </div>
+            <br><%= x.name %><br>
+            <%= x.release_country %> | 
+            <%= x.release_year %>
+          </div>
         <% end %>
       </div>
     </div>
@@ -29,7 +28,7 @@
                 wishlist <a href="/delete_collection/<%=x.id%>", data-confirm="Remove card from your collection?">x</a><br>
               <%end%>
             <%else%>
-             --<br>
+              --<br>
             <%end%>
             <% if x.image.present? %>
               <a href="/cards/<%=x.id%>"><%= image_tag(x.image.thumb.url) %></a>
@@ -42,6 +41,18 @@
       </div>
     </div>
   <%end%>
+<%else%>
+<h4>Hoarder's Mine is a (template) platform for collector's to keep track of their collections!</h4>
+<h5>Signup/Login to try it out!</h5>
+<br>
+<h5>How it works</h5>
+<ul>
+<li>Dedicated 'Admins' will upload collection items (image with description).</li>
+<li>'Hoarders' (users) can view the uploaded items & add them under their 'Owned' collection or 'Wishlist'.</li>
+<li>'Hoarders' can 'Suggest' new items or 'Report' an item if there are any incorrect details.</li>
+<li>'Admins' will be able to view/approve/act on these suggestion/reports contributed by the 'Hoarders'.</li>
+<li>Preferably used as a dedicated site for a specific kind collection item (eg. Pokémon TCG cards, Thomas minis trains, Tsum Tsum toys, foreign/old currencies)</li>
+</ul>
 <%end%>
 
 <%= will_paginate @card %>

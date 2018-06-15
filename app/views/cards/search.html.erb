@@ -1,25 +1,47 @@
-<div class="container">
-      <div class="row">
-        <% @card.each do |x| %>
-          <div class="col-sm-2">
-            <%if current_user.ownerships.find_by(card_id: x.id).present?%>
-              <%if current_user.ownerships.find_by(card_id: x.id).owned?%>
-                owned <a href="/delete_collection/<%=x.id%>", data-confirm="Remove card from your collection?">x</a><br>
-              <%else%>
-                wishlist <a href="/delete_collection/<%=x.id%>", data-confirm="Remove card from your collection?">x</a><br>
-              <%end%>
+<h3>Search Results</h3>
+
+<% if @card.blank? %>
+<h4>No search results for <%= params[:search] %>.</h4>
+<% end %>
+
+<%if current_user.admin?%>
+  <div class="container">
+    <div class="row">
+      <% @card.each do |x| %>
+        <div class="col-sm-2">
+          <% if x.image.present? %>
+            <a href="/cards/<%=x.id%>"><%= image_tag(x.image.thumb.url) %></a>
+          <% end%>
+          <br><%= x.name %><br>
+          <%= x.release_country %> | 
+          <%= x.release_year %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<%else%>
+  <div class="container">
+    <div class="row">
+      <% @card.each do |x| %>
+        <div class="col-sm-2">
+          <%if current_user.ownerships.find_by(card_id: x.id).present?%>
+            <%if current_user.ownerships.find_by(card_id: x.id).owned?%>
+              owned <a href="/delete_collection/<%=x.id%>", data-confirm="Remove card from your collection?">x</a><br>
             <%else%>
-             --<br>
+              wishlist <a href="/delete_collection/<%=x.id%>", data-confirm="Remove card from your collection?">x</a><br>
             <%end%>
+          <%else%>
+            --<br>
+          <%end%>
             <% if x.image.present? %>
               <a href="/cards/<%=x.id%>"><%= image_tag(x.image.thumb.url) %></a>
             <% end%>
             <br><%= x.name %><br>
             <a href="add_owned/<%=x.id%>">Owned</a> | 
             <a href="add_wishlist/<%=x.id%>">Wishlist</a>
-          </div>
-        <%end%>
-      </div>
+        </div>
+      <%end%>
     </div>
-
+  </div>
+<%end%>
 <a href="/">Back</a>

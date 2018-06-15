@@ -10,4 +10,10 @@ class UsersController < ApplicationController
         @ownership = current_user.ownerships
         @wish_count = @ownership.where(status: "wishlist")
     end
+
+    def suggest
+    end
+
+    def status
+    end
 end
