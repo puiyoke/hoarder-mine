@@ -2,7 +2,7 @@
 <br>
 <p>Please fill up this form</p>
 
-<%= form_for :report, url: '/report/new' do |f| %>
+<%= form_for :report, url: '/report' do |f| %>
     Report Details:<%= f.text_area :details, :required => 'required', placeholder: "Please let us know the details of the problem", class: 'form-control col-md-4' %><br>
     Have a better image of the card? Please submit it below:<br><br>
     Image: <%= f.file_field :image%><br><br>

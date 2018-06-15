@@ -1,0 +1,16 @@
+<h3>Pending Suggestions!</h3>
+
+<%@suggest.each do |x|%>
+        <ul>
+            <li>
+                Image submitted:
+                <%=image_tag x.image.thumb.url%><br>
+                Name: <%=x.name%><br>
+                Country: <%=x.release_country%><br>
+                Year: <%=x.release_year%><br>
+                Details: <%=x.details%><br>
+                Review Comments: <%=x.review%><br>
+                Status: <%=x.status%>
+            </li>
+        </ul>
+<%end%>

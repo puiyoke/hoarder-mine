@@ -1,0 +1,23 @@
+<h3>Pending Reports!</h3>
+
+    
+<%@report.each do |x|%>
+    <%Card.where(id: x.card_id).each do |y|%>
+        <ul>
+            <li>
+                <a href="/cards/<%=y.id%>"><%=image_tag y.image.thumb.url%></a>
+                Image submitted:
+                <%if x.image.present?%>
+                    <%=image_tag x.image.thumb.url%><br>
+                <%else%>
+                    N/A<br>
+                <%end%>
+                Details submitted: <%=x.details%><br>
+                Review Comments: <%=x.review%><br>
+                Status: <%=x.status%>
+            </li>
+        </ul>
+    <%end%>
+<%end%>
+
+    

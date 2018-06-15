@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_15_070924) do
+ActiveRecord::Schema.define(version: 2018_06_15_085613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_06_15_070924) do
     t.string "image"
     t.string "details"
     t.string "review", default: "pending"
+    t.integer "status", default: 0
     t.index ["card_id"], name: "index_reports_on_card_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 2018_06_15_070924) do
     t.integer "release_year"
     t.string "details"
     t.string "review", default: "pending"
+    t.integer "status", default: 0
     t.index ["user_id"], name: "index_suggestions_on_user_id"
   end
 

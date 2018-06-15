@@ -8,4 +8,6 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   has_many :ownerships, dependent: :destroy
   has_many :cards, through: :ownerships
+  has_many :reports
+  has_many :suggestions
 end

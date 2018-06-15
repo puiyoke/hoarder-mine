@@ -16,5 +16,9 @@ Rails.application.routes.draw do
   get 'delete_collection/:id' => 'ownerships#destroy'
 
   post 'suggest/new' => 'suggestions#create'
-  post 'report/new' => 'reports#create'
+  get 'report/:id' => 'reports#new'
+  post 'report' => 'reports#create'
+
+  get 'admin/report' => 'admin#report'
+  get 'admin/suggest' => 'admin#suggest'
 end
