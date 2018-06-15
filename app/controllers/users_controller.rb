@@ -15,5 +15,7 @@ class UsersController < ApplicationController
     end
 
     def status
+        @report = current_user.reports.order("status")
+        @suggest = current_user.suggestions.order("status")
     end
 end

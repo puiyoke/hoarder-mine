@@ -13,8 +13,9 @@
                     N/A<br>
                 <%end%>
                 Details submitted: <%=x.details%><br>
-                Review Comments: <%=x.review%><br>
-                Status: <%=x.status%>
+                Review Comments: <font color="red"><%=x.review%></font><br>
+                Status: <font color="red"><%=x.status%></font> | 
+                <a href="/admin/report_review/<%=x.id%>">Update review status</a>
             </li>
         </ul>
     <%end%>

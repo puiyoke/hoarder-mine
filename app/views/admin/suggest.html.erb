@@ -4,13 +4,18 @@
         <ul>
             <li>
                 Image submitted:
-                <%=image_tag x.image.thumb.url%><br>
+                <%if x.image.present?%>
+                    <%=image_tag x.image.thumb.url%><br>
+                <%else%>
+                    N/A<br>
+                <%end%>
                 Name: <%=x.name%><br>
                 Country: <%=x.release_country%><br>
                 Year: <%=x.release_year%><br>
                 Details: <%=x.details%><br>
-                Review Comments: <%=x.review%><br>
-                Status: <%=x.status%>
+                Review Comments: <font color="red"><%=x.review%></font><br>
+                Status: <font color="red"><%=x.status%></font> | 
+                <a href="/admin/suggest_review/<%=x.id%>">Update review status</a>
             </li>
         </ul>
 <%end%>

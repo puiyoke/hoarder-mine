@@ -1,6 +1,6 @@
 <h3>Suggest/Report Status</h3>
 <br><h4>Reports</h4>
-<%current_user.reports.each do |x|%>
+<%@report.each do |x|%>
     <%Card.where(id: x.card_id).each do |y|%>
         <ul>
             <li>
@@ -9,13 +9,14 @@
                     <%=image_tag x.image.small_thumb.url%>
                 <%end%>
                 <br>Problem details: <%=x.details%><br>
-                Review : <%=x.review%><br>
+                Review : <font color="green"><%=x.review%></font><br>
+                Status: <font color="green"><%=x.status%></font>
             </li>
         </ul>
     <%end%>
 <%end%>
-<br><br><h4>Suggestions</h4>
-<%current_user.suggestions.each do |x|%>
+<br><h4>Suggestions</h4>
+<%@suggest.each do |x|%>
     <ul>
         <li>
             <%=image_tag x.image.small_thumb.url%><br>
@@ -23,7 +24,8 @@
             Country: <%=x.release_country%><br>
             Year: <%=x.release_year%><br>
             Details: <%=x.details%><br>
-            Review : <%=x.review%>
+            Review: <font color="green"><%=x.review%><br></font>
+            Status: <font color="green"><%=x.status%></font>
         </li>
     </ul>
 <%end%>

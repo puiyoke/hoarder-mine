@@ -21,4 +21,9 @@ Rails.application.routes.draw do
 
   get 'admin/report' => 'admin#report'
   get 'admin/suggest' => 'admin#suggest'
+
+  get 'admin/report_review/:id' => 'admin#report_review'
+  get 'admin/suggest_review/:id' => 'admin#suggest_review'
+  post 'admin/report_review/:id' => 'admin#report_update'
+  post 'admin/suggest_review/:id' => 'admin#suggest_update'
 end
