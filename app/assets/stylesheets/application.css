@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+body {
+    background-color:#d3dadb;
+    font-family: 'Lato', sans-serif;
+}
+
+.split-left {
+  display: table-cell;
+  text-align: left;
+  vertical-align: top;
+  width: 55%;
+  padding: 1rem;
+}
+
+.split-right {
+    display: table-cell;
+    text-align: left;
+    vertical-align: top;
+    padding: 1rem;
+  }
+

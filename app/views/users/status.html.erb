@@ -1,31 +1,38 @@
-<h3>Suggest/Report Status</h3>
-<br><h4>Reports</h4>
-<%@report.each do |x|%>
-    <%Card.where(id: x.card_id).each do |y|%>
+<h3>Suggestion/Report Status</h3>
+
+<section class="container">
+  <div class="left-half split-left">
+  <h3>Reports</h3>
+  <%@report.each do |x|%>
+      <%Card.where(id: x.card_id).each do |y|%>
+          <ul>
+              <li>
+                  <a href="/cards/<%=y.id%>"><%=image_tag y.image.small_thumb.url%></a>
+                  <%if x.image.present?%>
+                      <%=image_tag x.image.small_thumb.url%>
+                  <%end%>
+                  <br>Problem details: <%=x.details%><br>
+                  Review : <font color="green"><%=x.review%></font><br>
+                  Status: <font color="green"><%=x.status%></font>
+              </li>
+          </ul>
+      <%end%>
+  <%end%>
+  </div>
+  <div class="right-half split-right">
+    <h3>Suggestions</h3>
+    <%@suggest.each do |x|%>
         <ul>
             <li>
-                <a href="/cards/<%=y.id%>"><%=image_tag y.image.small_thumb.url%></a>
-                <%if x.image.present?%>
-                    <%=image_tag x.image.small_thumb.url%>
-                <%end%>
-                <br>Problem details: <%=x.details%><br>
-                Review : <font color="green"><%=x.review%></font><br>
+                <%=image_tag x.image.small_thumb.url%><br>
+                Name: <%=x.name%><br>
+                Country: <%=x.release_country%><br>
+                Year: <%=x.release_year%><br>
+                Details: <%=x.details%><br>
+                Review: <font color="green"><%=x.review%><br></font>
                 Status: <font color="green"><%=x.status%></font>
             </li>
         </ul>
     <%end%>
-<%end%>
-<br><h4>Suggestions</h4>
-<%@suggest.each do |x|%>
-    <ul>
-        <li>
-            <%=image_tag x.image.small_thumb.url%><br>
-            Name: <%=x.name%><br>
-            Country: <%=x.release_country%><br>
-            Year: <%=x.release_year%><br>
-            Details: <%=x.details%><br>
-            Review: <font color="green"><%=x.review%><br></font>
-            Status: <font color="green"><%=x.status%></font>
-        </li>
-    </ul>
-<%end%>
+  </div>
+</section>
