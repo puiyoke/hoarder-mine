@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   get 'add_owned/:id' => 'ownerships#own'
   get 'add_wishlist/:id' => 'ownerships#wish'
   get 'delete_collection/:id' => 'ownerships#destroy'
+
+  post 'suggest/new' => 'suggestions#create'
+  post 'report/new' => 'reports#create'
 end

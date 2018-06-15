@@ -1,3 +1,14 @@
-<h3>Repot a Problem</h3>
+<h3>Report a Problem</h3>
 <br>
 <p>Please fill up this form</p>
+
+<%= form_for :report, url: '/report/new' do |f| %>
+    Report Details:<%= f.text_area :details, :required => 'required', placeholder: "Please let us know the details of the problem", class: 'form-control col-md-4' %><br>
+    Have a better image of the card? Please submit it below:<br><br>
+    Image: <%= f.file_field :image%><br><br>
+    Image URL: <%= f.text_field :remote_image_url, class: 'form-control col-md-4' %><br>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :card_id, value: params[:id] %>
+
+    <%= f.submit "Submit", class:"btn btn-primary" %>
+<% end %>
